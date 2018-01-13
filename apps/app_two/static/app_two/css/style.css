@@ -1,0 +1,59 @@
+a{
+  display: block;
+  font-family: sans-serif;
+}
+
+.addplan{
+  margin-left: 60%;
+}
+
+h2, h3, p{
+  font-family: sans-serif;
+}
+
+.miniwrap{
+  display: block;
+  width: 30%;
+  height: auto;
+  background-color: lightblue;
+  border: 2px solid darkblue;
+  padding: 10px 10px 10px 10px;
+}
+
+table{
+  border-collapse: collapse;
+  width: 70%;
+  border: 1px solid black;
+  text-align: center;
+}
+
+/*zebra striping for table rows*/
+tbody tr:nth-child(even){
+  background-color: lavender;
+}
+tbody tr:nth-child(odd){
+  background-color: lightpink;
+}
+
+td{
+    font-family: sans-serif;
+    border-left: 1px solid black;
+}
+
+input, textarea{
+  margin-top: 8px;
+}
+
+.usertrips1{
+  border: 1px solid black;
+}
+
+.usertrips th{
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.wrapper{
+  display: block;
+  width: 100%;
+}

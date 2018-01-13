@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Travel Dashboard</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app_two/css/style.css' %}" media="screen" title="no title">
+  </head>
+
+  <body>
+
+    <!-- <h1>This is index.html in app2</h1> -->
+    <div class = "wrapper">
+
+      <h1>Hello, {{ request.session.name }}!</h1>
+      <p><a href="{% url 'users:logout' %}">Log out</a></p>
+
+      <div class = "usertrips">
+      <h2>Your Trip Schedules</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Destination</th>
+              <th>Travel Start Date</th>
+              <th>Travel End Date</th>
+              <th>Plan</th>
+            </tr>
+          </thead>
+
+<!-- This displays all the logged-in user's trips, sent from index method -->
+          <tbody>
+            {% for trip in trips %}
+              <tr>
+
+                <td><a href="{% url 'travel:destination' trip_id=trip.id %}">{{ trip.destination }}</a></td>
+
+                <td>{{ trip.start_date }}</td>
+                <td>{{ trip.end_date }}</td>
+                <td>{{ trip.plan }}</td>
+                <td>{{ trip.id }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div><!--usertrips end div -->
+
+        <div class = "usertrips">
+        <h2>Other Users' Travel Plans</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Plan</th>
+                <th>Do You Want to Join?</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for trip in all_trips %}
+                <tr>
+                  <td>{{ trip.user_id.name }}</td>
+                  <td><a href="{% url 'travel:destination' trip_id=trip.id %}">{{ trip.destination }}</a></td>
+                  <td>{{ trip.start_date }}</td>
+                  <td>{{ trip.end_date }}</td>
+                  <td>{{ trip.plan }}</td>
+
+<!-- This link captures the id for the data above and send it to a function in views.py so the trip object can be added to "joining" users via the related name -->
+                  <td><a href="{% url 'travel:join_trip' trip_id=trip.id %}">Join</a></td>
+                  <td>{{ trip.id }}</td>
+
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <br>
+          <br>
+        </div><!-- usertrips end div -->
+
+    </div><!-- wrapper end div -->
+
+    <div class="addplan">
+      <a href="{% url 'travel:add_plan' %}">Add Travel Plan</a>
+    </div>
+
+  </body>
+</html>

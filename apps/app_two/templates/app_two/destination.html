@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Destination</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app_two/css/style.css' %}" media="screen" title="no title">
+
+  </head>
+  <body>
+
+    <div class="miniwrap">
+      <p><a href="{% url 'users:index' %}">Home</a></p>
+      <p><a href="{% url 'travel:logout' %}">Logout</a></p>
+
+      <h3>{{ trip.destination }}</h3>
+      <h3>Planned By: {{ user.name }}</h3>
+      <h3>Description:  {{ trip.plan }}</h3>
+      <h3>Travel Date From: {{ trip.start_date }}</h3>
+      <h3>Travel Date To: {{ trip.end_date }}</h3>
+
+      <h2>Other users joining the trip:</h2>
+          {% for user in users %}
+            <p>{{ user.name }}</p>
+          {% endfor %}
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app_two/css/style.css' %}" media="screen" title="no title">
+
+    <title>Add Plan</title>
+  </head>
+  <body>
+
+    <div class="miniwrap">
+      <p><a href="{% url 'travel:logout' %}">Logout</a></p>
+
+      <form action = "{% url 'travel:add_plan' %}" method="POST">
+        {% csrf_token %}
+
+        <h1>Add a Trip</h1>
+        <h3>Destination: <textarea name = "destination" rows = "1" style = "width:97%"></textarea></h3>
+        <h3>Description: <textarea name = "plan" rows = "3" style = "width:97%"></textarea></h3>
+        <h3>Travel Date From: <input type="date" name = "start_date" value=""></h3>
+
+        <h3>Travel Date To: <input type="date" name="end_date" value=""></h3>
+
+        <input type="Submit" value="Add">
+      </form>
+    </div>
+  </body>
+</html>

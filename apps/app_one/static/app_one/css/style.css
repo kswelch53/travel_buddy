@@ -1,0 +1,22 @@
+.error_messages{
+  display: block;
+}
+
+h1, h3{
+  font-family: sans-serif;
+}
+
+.login_reg{
+    display: inline-block;
+    background-color: lightblue;
+    border: 1px solid black;
+    width: 40%;
+    height: auto;
+    vertical-align: top;
+    padding-left: 10px;
+}
+
+.wrapper{
+  display: block;
+  width: 100%;
+}
